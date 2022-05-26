@@ -11,18 +11,20 @@ import java.util.stream.Collectors;
 
 /*
     Goal: Chain filter() and map() to collect the ids of videos that have a rating of 5.0
+    Objetivo: Chain filter() y map() para recopilar las identificaciones de videos que tienen una calificación de 5.0
     DataSource: DataUtil.getMovies()
     Output: List of Integers
 */
 public class Kata2 {
     public static List<Integer> execute() {
         List<Movie> movies = DataUtil.getMovies();
-        List<Integer> peliculas = movies.stream().map(
-                pelis -> pelis.getRating())
-                .filter(raiting -> raiting == 5.0).map(
-                        valor -> valor.intValue())
-                                .collect(Collectors.toList());
-        return peliculas;
+        List<Integer> peliculasPorCalificacionAlta = movies.stream()
+                .map(pelis -> pelis.getRating())
+                .filter(calificacion -> calificacion == 5.0)
+                .map(valor -> valor.intValue())
+                .collect(Collectors.toList());
+
+        return peliculasPorCalificacionAlta;
         //return ImmutableList.of(1, 2, 3);
     }
 }

@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 /*
     Goal: use map() to project an array of videos into an array of {id, title}-pairs
+    Objetivo: usar map() para mostrar una serie de videos en una array de {id, title} parejas
     DataSource: DataUtil.getMovies()
     Output: List of ImmutableMap.of("id", "5", "title", "Bad Boys")
 */
@@ -20,11 +21,10 @@ public class Kata1 {
 
     public static List<Map> execute() {
         List<Movie> movies = DataUtil.getMovies();
-        List<Map> matriz = movies.stream().map(
-                p -> Map.of(p.getId(), p.getTitle()))
-                .collect(Collectors.toList());
 
-        return matriz;
+        return movies.stream()
+                .map(pelicula -> Map.of(pelicula.getId(), pelicula.getTitle()))
+                .collect(Collectors.toList());
     }
 
 
